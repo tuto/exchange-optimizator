@@ -1,0 +1,3 @@
+exchanges:
+   - name: "buda"
+   - name: "bitstamp"

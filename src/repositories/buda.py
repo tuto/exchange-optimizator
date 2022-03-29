@@ -1,8 +1,9 @@
 import requests
 from src.domain.ticker import Ticker
+from src.domain.exchangeInterface import ExchangeInterface
 from src.infrastructure.clients.buda import get_ticker
 
-class Buda:
+class Buda(ExchangeInterface):
     def __init__(self):
         self.additionalParams = {}
 

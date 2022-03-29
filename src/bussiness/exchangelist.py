@@ -12,7 +12,7 @@ class ExchangeList:
         exchangeClass.setAdditionalParams(additionalParams)
         self.exchanges.append(exchangeClass)
 
-    def get_minimun_ticker(self, market_id):
+    def get_prices(self, market_id):
 
         marketId = MarketId(market_id)
         results = []
@@ -20,8 +20,17 @@ class ExchangeList:
             tickerExchange = exchange.get_ticker(marketId)
             results.append({"name":exchange.get_name(), "price": tickerExchange.last_price})
 
-        return sorted(results, key=lambda ticker: ticker["price"][0])
-        
+        return results
+
+    def order_prices(self, exchanges):
+         return sorted(exchanges, key=lambda ticker: ticker["price"][0], reverse=True)
+
+    def calculateCurrencyRate(self, currencyQuantity, exchanges):
+        results = []
+        for exchange in exchanges:
+            quantity = currencyQuantity/exchange["price"][0]
+            results.append({exchange["name"]: quantity})
+        return results
     def __import(self, exchangeName):
         mod = __import__(f'src.repositories.{exchangeName}', fromlist=[exchangeName.capitalize()])
         klass = getattr(mod, exchangeName.capitalize())
