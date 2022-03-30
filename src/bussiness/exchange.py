@@ -56,7 +56,7 @@ class Exchange:
         return self.client.get_ticker(market_id, usdcPrice*additionalRate)
     
     def __findCurrency(self, currency):
-         """
+        """
         Parameters
         ----------
         currency : str
@@ -65,4 +65,4 @@ class Exchange:
         if len(list(filter(lambda currencyValid: currencyValid["name"] == currency.upper(), self.additionalParams["currencies"]))) > 0:
             return True
         else:
-            return False;
+            return False
