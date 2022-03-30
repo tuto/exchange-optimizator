@@ -1,3 +1,10 @@
 exchanges:
    - name: "buda"
+     currencies:
+      - name: CLP
+      - name: COP
+      - name: BTC
+      - name: ETH
    - name: "bitstamp"
+     currencies:
+      - name: USD

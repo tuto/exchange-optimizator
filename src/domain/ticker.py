@@ -8,6 +8,3 @@ class Ticker:
         self.price_variation_24h = priceVariation24Hours
         self.price_variation_7d = priceVariation7d
         self.volume = volume
-        
-    def __str__(self):
-        return str(self.__class__) + ": " + str(self.__dict__)

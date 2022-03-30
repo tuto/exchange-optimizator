@@ -1,12 +1,13 @@
-class ExchangeInterface:
-    def setAdditionalParams(self, params):
-        """Set additional params to exchange"""
-        pass
+class ExchangeInterface:# pragma: no cover
+    """
+    A class interface to create infrastructure exchanges classes
+    ...
 
-    def get_name(self):
-        """Return name of exchange"""
-        pass
-    
-    def get_ticker(self, market_id):
-        """Return the ticker"""
+    Methods
+    -------
+    get_ticker()
+       obtain ticker object with data from exchange 
+    """
+    def get_ticker(self,  market_id, rate):
+        """get ticker object from exchange"""
         pass

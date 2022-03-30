@@ -9,6 +9,3 @@ class MarketId:
             return market_id.split("-")
         else:
             raise MarketIdFormatError;
-
-    def __str__(self):
-        return str(self.__class__) + ": " + str(self.__dict__)
