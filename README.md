@@ -4,7 +4,7 @@ Codigo para prueba de buda.com.
 Para esta prueba se eligió Python ya que hace rato que no programaba en el y quise renovar mis conocimientos :D
 
 ## Arquitectura y estructura de clases
-![Arquitectura](https://raw.githubusercontent.com/tuto/exchange-optimizator/main/doc/arquitectura.png)
+![Arquitectura](/doc/arquitectura.png)
 - bussiness: 
     Capa de negocio
 
