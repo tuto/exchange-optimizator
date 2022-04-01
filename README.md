@@ -3,7 +3,7 @@
 Codigo para prueba de buda.com
 
 ## Arquitectura y estructura de clases
-    ![Arquitectura](doc/architectura.png)
+    ![Arquitectura](https://raw.githubusercontent.com/tuto/exchange-optimizator/main/doc/architectura.png)
    
     - bussiness: 
         Capa de negocio
