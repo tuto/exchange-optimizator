@@ -32,3 +32,32 @@ python3 runner.py -m btc-clp -q 100000 -r 0.01
 - -m: mercado
 - -q: cantidad de clp a obtener
 - -r: cargo por cambio a usd
+
+
+## Tests
+Para correr los tests se necesita tener instalado el modulo **coverage** de python y ejecutar
+```
+coverage run --source=src/ -m unittest discover ; coverage report -m
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK
+Name                                     Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------
+src/bussiness/exchange.py                   23      0   100%
+src/domain/exceptions.py                     4      0   100%
+src/domain/exchangeInterface.py              0      0   100%
+src/domain/marketid.py                       8      0   100%
+src/domain/ticker.py                         9      0   100%
+src/infrastructure/clients/bitstamp.py      18      8    56%   42-49
+src/infrastructure/clients/buda.py          18      8    56%   42-49
+src/infrastructure/clients/rates.py         16      8    50%   33-40
+----------------------------------------------------------------------
+TOTAL                                       96     24    75%
+```
+
+
+## Como agregar un nuevo exchange?
+
+Para crear un nuevo exchange solo se debe crear una nueva configuración en exchange-config.yaml y crear una nueva clase en infrastructure/clients 
