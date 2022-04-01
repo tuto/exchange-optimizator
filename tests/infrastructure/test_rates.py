@@ -33,5 +33,5 @@ class TestMarketId(unittest.TestCase):
     @patch('src.infrastructure.clients.rates.requests.get', side_effect=mocked_requests_get)
     def test_get_ticker(self, mocked_requests_get):
         rates = Rates();
-        tickerResponse = rates.get_usdc_price(MarketId("btc-clp"))
+        tickerResponse = rates.get_rate_price(MarketId("btc-clp"))
         self.assertEqual(879789.0, tickerResponse)

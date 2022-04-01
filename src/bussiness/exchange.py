@@ -1,4 +1,5 @@
 from src.infrastructure.clients.rates import Rates
+from src.domain.ticker import Ticker
 
 class Exchange:
     """
@@ -37,7 +38,7 @@ class Exchange:
     def get_name(self):
         return self.name
         
-    def get_ticker(self, market_id):
+    def get_ticker(self, market_id) -> Ticker:
         """
         Parameters
         ----------
@@ -47,7 +48,7 @@ class Exchange:
         currencyPivote = market_id.pair[1]
         usdcPrice = 1 
         if not self.__findCurrency(currencyPivote):
-            usdcPrice = self.rates.get_usdc_price(f'usdc-{currencyPivote}')
+            usdcPrice = self.rates.get_rate_price(f'usdc-{currencyPivote}')
        
         additionalRate = 1;
         if "additionalRate" in self.additionalParams:
@@ -55,7 +56,7 @@ class Exchange:
 
         return self.client.get_ticker(market_id, usdcPrice*additionalRate)
     
-    def __findCurrency(self, currency):
+    def __findCurrency(self, currency) -> bool:
         """
         Parameters
         ----------

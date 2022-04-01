@@ -1,5 +1,7 @@
 from src.domain.marketid import MarketId
 from src.bussiness.exchange import Exchange
+from src.domain.exceptions import ExchangeApiError
+
 import importlib
 
 class ExchangeList:
@@ -42,7 +44,7 @@ class ExchangeList:
         clientClass = self.__importClient(exchangeName)
         self.exchanges.append(Exchange(exchangeName, additionalParams, clientClass))
 
-    def get_prices(self, market_id):
+    def get_prices(self, market_id) -> list:
         """
         Parameters
         ----------
@@ -52,12 +54,15 @@ class ExchangeList:
         marketId = MarketId(market_id)
         results = []
         for exchange in self.exchanges:
-            tickerExchange = exchange.get_ticker(marketId)
-            results.append({"name":exchange.get_name(), "price": tickerExchange.last_price})
+            try: 
+                tickerExchange = exchange.get_ticker(marketId)
+                results.append({"name":exchange.get_name(), "price": tickerExchange.last_price})
+            except ExchangeApiError as e:
+                print(f'Exchange {exchange.get_name()} api raise a exception', e)
 
         return results
 
-    def order_prices(self, exchanges):
+    def order_prices(self, exchanges) -> list:
         """
         Parameters
         ----------
@@ -66,7 +71,7 @@ class ExchangeList:
         """
         return sorted(exchanges, key=lambda ticker: ticker["price"][0], reverse=True)
 
-    def calculateCurrencyRate(self, currencyQuantity, market_id):
+    def calculateCurrencyRate(self, currencyQuantity, market_id) -> list:
         """
         Parameters
         ----------
