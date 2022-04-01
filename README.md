@@ -22,3 +22,13 @@ Codigo para prueba de buda.com
     1. Rates: Clase que representa un cliente para sacar los rates
     2. Buda: Cliente para conectarse a buda
     3. Bitstamp: Cliente para conectarse a bitstamp
+
+## Ejecución
+
+Para ejecutar el programa se puede utilizar un runner que se creó. 
+```
+python3 runner.py -m btc-clp -q 100000 -r 0.01
+```
+- -m: mercado
+- -q: cantidad de clp a obtener
+- -r: cargo por cambio a usd
